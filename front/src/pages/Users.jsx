@@ -7,7 +7,7 @@ import './Users.css'
 import api from '../../services/api'
 
 
-const Users = () => {
+const Users = ({themeToggler}) => {
 
     const [users, setUsers] = useState([])
     const [searchTerm, setSearchTerm] = useState('')
@@ -37,6 +37,7 @@ const Users = () => {
 
     return (
       <div className='container-users'>
+        <button onClick={themeToggler}>Trocar</button>
         <h1>Usuários</h1>
         <div className='search-bar'>
           <img src={Lupa} />

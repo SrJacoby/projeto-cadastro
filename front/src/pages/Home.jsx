@@ -5,7 +5,7 @@ import './Home.css'
 import api from '../../services/api'
 import users from '../pages/Users'
 
-const Home = () =>{
+const Home = ({themeToggler}) =>{
 
   const inputName = useRef()
   const inputEmail = useRef()
@@ -24,6 +24,7 @@ const Home = () =>{
   return (
     <div>
         <div className='container'>
+          <button onClick={themeToggler}>Trocar</button>
           <h1>Criar Conta</h1>
           <form>
           <input placeholder='Nome' name='name' type='text' ref={inputName}/>

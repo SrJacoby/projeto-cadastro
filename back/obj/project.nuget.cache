@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "G6Q/ZnUsRo8=",
+  "dgSpecHash": "1L/p+DxSnCQ=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Luiz Augusto\\Documents\\estudos\\crud-back-front\\back\\back.csproj",
+  "projectFilePath": "C:\\Users\\Luiz Augusto\\Documents\\estudos\\projeto-cadastro\\back\\back.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Luiz Augusto\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\Luiz Augusto\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

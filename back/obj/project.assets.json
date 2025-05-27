@@ -5469,11 +5469,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Luiz Augusto\\Documents\\estudos\\crud-back-front\\back\\back.csproj",
+      "projectUniqueName": "C:\\Users\\Luiz Augusto\\Documents\\estudos\\projeto-cadastro\\back\\back.csproj",
       "projectName": "back",
-      "projectPath": "C:\\Users\\Luiz Augusto\\Documents\\estudos\\crud-back-front\\back\\back.csproj",
+      "projectPath": "C:\\Users\\Luiz Augusto\\Documents\\estudos\\projeto-cadastro\\back\\back.csproj",
       "packagesPath": "C:\\Users\\Luiz Augusto\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Luiz Augusto\\Documents\\estudos\\crud-back-front\\back\\obj\\",
+      "outputPath": "C:\\Users\\Luiz Augusto\\Documents\\estudos\\projeto-cadastro\\back\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Luiz Augusto\\AppData\\Roaming\\NuGet\\NuGet.Config",

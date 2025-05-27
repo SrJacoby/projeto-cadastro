@@ -4,11 +4,11 @@ import { Routes, Route } from "react-router-dom";
 import Home from "../pages/Home";
 import Users from "../pages/Users";
 
-const AppRoutes = () => {
+const AppRoutes = ({themeToggler}) => {
    return(
         <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/users" element={<Users />} />
+            <Route path="/" element={<Home themeToggler={themeToggler}/>} />
+            <Route path="/users" element={<Users themeToggler={themeToggler}/>} />
         </Routes>
    )
 }
