@@ -1,11 +1,16 @@
 import { useEffect, useState } from 'react'
 import React from 'react'
 import { Link } from "react-router-dom"
-import TrashCan from '../assets/trashcan.svg'
-import Lupa from '../assets/lupa.svg'
-import './Users.css'
+import DarkTrashCan from '../assets/darktrashcan.svg'
+import WhiteTrashCan from '../assets/whitetrashcan.svg'
+import DarkLupa from '../assets/darklupa.svg'
+import WhiteLupa from '../assets/whitelupa.svg'
+import Moon from '../assets/moon.svg'
+import Sun from '../assets/sun.svg'
 import api from '../../services/api'
-
+import { ContainerUsers, SearchBar, Card, BackButton } from './GlobalStyles'
+import { useTheme } from 'styled-components'
+  
 
 const Users = ({themeToggler}) => {
 
@@ -35,31 +40,36 @@ const Users = ({themeToggler}) => {
     user.email.toLowerCase().includes(searchTerm.toLowerCase())
   )
 
+  const theme = useTheme()
+  const isDark = theme.mode === 'dark'
+
     return (
-      <div className='container-users'>
-        <button onClick={themeToggler}>Trocar</button>
+      <ContainerUsers>
+        <button onClick={themeToggler}>
+          <img src={isDark ? Sun : Moon} />
+        </button>
         <h1>Usuários</h1>
-        <div className='search-bar'>
-          <img src={Lupa} />
+        <SearchBar>
+          <img src={isDark ? WhiteLupa : DarkLupa} />
           <input type="text" placeholder='Buscar...' value={searchTerm} onChange={handleSearchChange}/>
-        </div>
+        </SearchBar>
         
         {filteredUsers.map( user => (
-          <div key={user.id} className='card'>
+          <Card key={user.id}>
           <div>
             <p>Nome: <span>{user.name}</span></p>
             <p>E-mail: <span>{user.email}</span></p>
           </div>
           <button onClick={() => deleteUsers(user.id)}>
-            <img src={TrashCan}/>
+            <img src={isDark ? WhiteTrashCan : DarkTrashCan}/>
           </button>
-          </div>
+          </Card>
         ))}
 
         <Link to={"/"} style={{ textDecoration: 'none' }}>
-          <button id='back-button'>Voltar</button>
+          <BackButton>Voltar</BackButton>
         </Link>
-      </div>
+      </ContainerUsers>
     );
 }
 
