@@ -1,3 +1,3 @@
 using System;
 
-public record RegisterRequest(string name, string email, string password);
+public record RegisterRequest(string Name, string Email, string Password);

@@ -11,9 +11,18 @@ public static class RegisterRoute
 
         route.MapPost("", async (RegisterRequest req, RegisterContext context) =>
         {
-            var person = new RegisterModel(req.name, req.email, req.password);
+            var emailExists = await context.People.AnyAsync(p  => p.Email == req.Email);
+
+            if (emailExists)
+            {
+                return Results.Conflict("E-mail já cadastrado");
+            }
+
+            var person = new RegisterModel(req.Name, req.Email, req.Password);
             await context.AddAsync(person);
             await context.SaveChangesAsync();
+
+            return Results.Ok(person);
         });
 
         route.MapGet("", async (RegisterContext context) =>
@@ -31,7 +40,7 @@ public static class RegisterRoute
                 return Results.NotFound();
             }
 
-            person.ChangeProfile(req.name, req.email, req.password);
+            person.ChangeProfile(req.Name, req.Email, req.Password);
             await context.SaveChangesAsync();
 
             return Results.Ok(person);

@@ -1,8 +1,7 @@
 import React from 'react'
 import { useRef } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import api from '../../services/api'
-import users from '../pages/Users'
 import { Container, Form } from './GlobalStyles'
 import { useTheme } from 'styled-components'
 import Moon from '../assets/moon.svg'
@@ -13,18 +12,63 @@ const Home = ({themeToggler}) =>{
   const inputName = useRef()
   const inputEmail = useRef()
   const inputPassword = useRef()
+  const navigate = useNavigate()
 
   //Post
-  
-  async function getUsers() {
+
+  async function createUsers() {
+    
+    const name = inputName.current.value.trim()
+    const email = inputEmail.current.value.trim()
+    const password = inputPassword.current.value.trim()
+
+    //Validação formulário vazio
+
+    if(!name || !email || !password){
+      alert("Por favor, preencha todos os campos.")
+      return
+    }
+
+    //Validação formatação e-mail
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+    if(!emailRegex.test(email)){
+      alert("Por favor, insira um e-mail válido.")
+      return
+    }
+
+    //Validação tamanho da senha
+
+    if (password.length < 6){
+      alert("A senha deve ter no mínimo 6 caracteres.")
+      return
+    }
+
+    try{
     await api.post('/person', {
-      name: inputName.current.value,
-      email: inputEmail.current.value,
-      password: inputPassword.current.value
+      name,
+      email,
+      password
     })
 
-    users.getUsers()
-    
+    alert("Usuário cadastrado com sucesso.")
+
+    inputName.current.value = ''
+    inputEmail.current.value = ''
+    inputPassword.current.value = ''
+
+    navigate('/users')
+
+    } catch (error) {
+      //Validação e-mail duplicado
+      if (error.response && error.response.status === 409){
+        alert("E-mail já cadastrado")
+      } else {
+      alert("Erro ao cadastrar o usuário.")
+      console.error(error)
+      }
+    }
   }
 
   //Modo escuro
@@ -43,7 +87,7 @@ const Home = ({themeToggler}) =>{
           <input placeholder='Nome' name='name' type='text' ref={inputName}/>
           <input placeholder='E-mail' name='email' type='email' ref={inputEmail}/>
           <input placeholder='Senha' name='password' type='password' ref={inputPassword}/>
-          <button type='button' onClick={getUsers}>Cadastrar</button>
+          <button type='button' onClick={createUsers}>Cadastrar</button>
           </Form>
           <li>
             <Link to="/users" style={{ textDecoration: 'none' }}>

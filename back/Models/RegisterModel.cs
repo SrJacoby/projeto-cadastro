@@ -1,25 +1,29 @@
 using System;
-namespace Register.Models;
+using Microsoft.EntityFrameworkCore;
 
-public class RegisterModel
+namespace Register.Models
 {
-    public RegisterModel(string name, string email, string password)
+    [Index(nameof(Email), IsUnique = true)]
+    public class RegisterModel
     {
-        Id = Guid.NewGuid();
-        Name = name;
-        Email = email;
-        Password = password;
-    }
+        public RegisterModel(string name, string email, string password)
+        {
+            Id = Guid.NewGuid();
+            Name = name;
+            Email = email;
+            Password = password;
+        }
 
-    public Guid Id { get; init; }
-    public string Name { get; private set; }
-    public string Email { get; private set; }
-    public string Password { get; private set; }
+        public Guid Id { get; init; }
+        public string Name { get; private set; }
+        public string Email { get; private set; }
+        public string Password { get; private set; }
 
-    public void ChangeProfile(string name, string email, string password)
-    {
-        Name = name;
-        Email = email;
-        Password = password;
+        public void ChangeProfile(string name, string email, string password)
+        {
+            Name = name;
+            Email = email;
+            Password = password;
+        }
     }
 }
