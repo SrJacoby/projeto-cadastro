@@ -45,7 +45,7 @@ const Users = ({themeToggler}) => {
 
     return (
       <ContainerUsers>
-        <button onClick={themeToggler}>
+        <button className='switch-mode' onClick={themeToggler}>
           <img src={isDark ? Sun : Moon} />
         </button>
         <h1>Usuários</h1>

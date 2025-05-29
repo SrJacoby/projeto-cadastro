@@ -31,7 +31,7 @@ const Home = ({themeToggler}) =>{
   return (
     <div>
         <Container>
-          <button onClick={themeToggler}>
+          <button className='switch-mode' onClick={themeToggler}>
             <img src={isDark ? Sun : Moon} />
           </button>
           <h1>Criar Conta</h1>

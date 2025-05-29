@@ -28,6 +28,23 @@ export const GlobalStyles = createGlobalStyle`
     & span:hover{
         opacity: 0.8;
     }
+    }
+
+    .switch-mode{
+        background-color: transparent;
+        border: 2px solid ${({theme}) => theme.border};
+        border-radius: 25px;
+        padding: 5px 15px;
+        cursor: pointer;
+        position: absolute;
+        top: 5px;
+        right: 5px;
+
+        & img{
+        max-height: 50px;
+        }
+    }
+    
 }
 `
 
