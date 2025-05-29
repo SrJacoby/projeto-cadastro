@@ -41,7 +41,7 @@ export const GlobalStyles = createGlobalStyle`
         right: 5px;
 
         & img{
-        max-height: 50px;
+        max-height: 35px;
         }
     }
     
