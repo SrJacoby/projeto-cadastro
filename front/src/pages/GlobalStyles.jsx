@@ -13,21 +13,21 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     h1{
-    font-family: sans-serif;
+        font-family: sans-serif;
     }
 
     li{
-    padding: 20px;
-    list-style-type: none;
+        padding: 20px;
+        list-style-type: none;
 
-    & span{
-        color: ${({theme}) => theme.span};
-        font-size: 1.2em;
-    }
+        & span{
+            color: ${({theme}) => theme.span};
+            font-size: 1.2em;
+        }
 
-    & span:hover{
-        opacity: 0.8;
-    }
+        & span:hover{
+            opacity: 0.8;
+        }
     }
 
     .switch-mode{
