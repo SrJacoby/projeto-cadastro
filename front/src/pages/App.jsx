@@ -6,6 +6,8 @@ import { GlobalStyles } from './GlobalStyles'
 
 function App() {
 
+  //Modo escuro
+
   const [theme, setTheme] = useState('light')
 
   const themeToggler = () => {

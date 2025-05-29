@@ -17,10 +17,14 @@ const Users = ({themeToggler}) => {
     const [users, setUsers] = useState([])
     const [searchTerm, setSearchTerm] = useState('')
 
+    //Get
+
     async function getUsers() {
       const usersFromApi = await api.get('/person')
       setUsers(usersFromApi.data)
     }
+
+    //Delete
 
     async function deleteUsers(id) {
       await api.delete(`/person/${id}`)
@@ -31,6 +35,8 @@ const Users = ({themeToggler}) => {
       getUsers()
     }, [])
 
+    //Filtro de pesquisa
+
     const handleSearchChange = (event) => {
     setSearchTerm(event.target.value)
     }
@@ -39,6 +45,8 @@ const Users = ({themeToggler}) => {
     user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     user.email.toLowerCase().includes(searchTerm.toLowerCase())
   )
+
+  //Modo Escuro
 
   const theme = useTheme()
   const isDark = theme.mode === 'dark'

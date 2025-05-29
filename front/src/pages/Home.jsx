@@ -14,6 +14,8 @@ const Home = ({themeToggler}) =>{
   const inputEmail = useRef()
   const inputPassword = useRef()
 
+  //Post
+  
   async function getUsers() {
     await api.post('/person', {
       name: inputName.current.value,
@@ -24,6 +26,8 @@ const Home = ({themeToggler}) =>{
     users.getUsers()
     
   }
+
+  //Modo escuro
 
   const theme = useTheme()
     const isDark = theme.mode === 'dark'
