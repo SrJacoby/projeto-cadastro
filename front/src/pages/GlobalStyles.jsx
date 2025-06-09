@@ -38,7 +38,7 @@ export const GlobalStyles = createGlobalStyle`
         cursor: pointer;
         position: absolute;
         top: 5px;
-        right: 5px;
+        left: 5px;
 
         & img{
         max-height: 35px;

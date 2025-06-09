@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import React from 'react'
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import DarkTrashCan from '../assets/darktrashcan.svg'
 import WhiteTrashCan from '../assets/whitetrashcan.svg'
 import DarkLupa from '../assets/darklupa.svg'
@@ -10,6 +10,7 @@ import Sun from '../assets/sun.svg'
 import api from '../../services/api'
 import { ContainerUsers, SearchBar, Card, BackButton } from './GlobalStyles'
 import { useTheme } from 'styled-components'
+import { ToastContainer, toast } from 'react-toastify'
   
 
 const Users = ({themeToggler}) => {
@@ -28,6 +29,7 @@ const Users = ({themeToggler}) => {
 
     async function deleteUsers(id) {
       await api.delete(`/person/${id}`)
+      toast.success("Usuário deletado com sucesso")
       getUsers()
     }
     
@@ -50,6 +52,17 @@ const Users = ({themeToggler}) => {
 
   const theme = useTheme()
   const isDark = theme.mode === 'dark'
+
+  //Mensagem de sucesso
+
+  const location = useLocation()
+
+  useEffect(() => {
+    if(location.state?.successMessage){
+      toast.success(location.state.successMessage)
+      window.history.replaceState({}, document.title)
+    }
+  }, [location.state])
 
     return (
       <ContainerUsers>
@@ -77,6 +90,9 @@ const Users = ({themeToggler}) => {
         <Link to={"/"} style={{ textDecoration: 'none' }}>
           <BackButton>Voltar</BackButton>
         </Link>
+        <ToastContainer
+          theme={theme.mode} 
+        />
       </ContainerUsers>
     );
 }

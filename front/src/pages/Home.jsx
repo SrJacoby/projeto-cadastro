@@ -6,6 +6,7 @@ import { Container, Form } from './GlobalStyles'
 import { useTheme } from 'styled-components'
 import Moon from '../assets/moon.svg'
 import Sun from '../assets/sun.svg'
+import { ToastContainer, toast } from 'react-toastify';
 
 const Home = ({themeToggler}) =>{
 
@@ -25,7 +26,7 @@ const Home = ({themeToggler}) =>{
     //Validação formulário vazio
 
     if(!name || !email || !password){
-      alert("Por favor, preencha todos os campos.")
+      toast.error("Por favor, preencha todos os campos.")
       return
     }
 
@@ -34,14 +35,14 @@ const Home = ({themeToggler}) =>{
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
     if(!emailRegex.test(email)){
-      alert("Por favor, insira um e-mail válido.")
+      toast.error("Por favor, insira um e-mail válido.")
       return
     }
 
     //Validação tamanho da senha
 
     if (password.length < 6){
-      alert("A senha deve ter no mínimo 6 caracteres.")
+      toast.error("A senha deve ter no mínimo 6 caracteres.")
       return
     }
 
@@ -52,21 +53,18 @@ const Home = ({themeToggler}) =>{
       password
     })
 
-    alert("Usuário cadastrado com sucesso.")
-
     inputName.current.value = ''
     inputEmail.current.value = ''
     inputPassword.current.value = ''
 
-    navigate('/users')
+    navigate('/users', { state: { successMessage: 'Usuário cadastrado com sucesso.' }})
 
     } catch (error) {
       //Validação e-mail duplicado
       if (error.response && error.response.status === 409){
-        alert("E-mail já cadastrado")
+        toast.error("E-mail já cadastrado")
       } else {
-      alert("Erro ao cadastrar o usuário.")
-      console.error(error)
+        toast.error("Erro ao cadastrar o usuário.")
       }
     }
   }
@@ -95,6 +93,9 @@ const Home = ({themeToggler}) =>{
             </Link>
           </li>
         </Container>
+        <ToastContainer
+          theme={theme.mode}
+         />
     </div>
   );
 }
