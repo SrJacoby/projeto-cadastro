@@ -90,6 +90,15 @@ export const Form = styled.div`
     & button:hover{
         opacity: 0.8;
     }
+
+    .icon-password{
+        border: none;
+        background: none;
+        position: relative;
+        left: 16rem;
+        bottom: 4.2rem;
+        width: 10px;
+    }
 `
 
 //Users.jsx

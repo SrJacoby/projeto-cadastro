@@ -1,12 +1,12 @@
-import React from 'react'
-import { useRef } from 'react'
+import React, {  useState, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import api from '../../services/api'
 import { Container, Form } from './GlobalStyles'
 import { useTheme } from 'styled-components'
 import Moon from '../assets/moon.svg'
 import Sun from '../assets/sun.svg'
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify'
+import { FaRegEyeSlash, FaRegEye } from 'react-icons/fa6'
 
 const Home = ({themeToggler}) =>{
 
@@ -14,6 +14,7 @@ const Home = ({themeToggler}) =>{
   const inputEmail = useRef()
   const inputPassword = useRef()
   const navigate = useNavigate()
+  const [display, setDisplay] = useState(false)
 
   //Post
 
@@ -74,6 +75,12 @@ const Home = ({themeToggler}) =>{
   const theme = useTheme()
     const isDark = theme.mode === 'dark'
 
+  //Mostrar/ocultar senha
+
+  const handleDisplay = () => {
+    setDisplay(!display)
+  }
+
   return (
     <div>
         <Container>
@@ -84,7 +91,11 @@ const Home = ({themeToggler}) =>{
           <Form>
           <input placeholder='Nome' name='name' type='text' ref={inputName}/>
           <input placeholder='E-mail' name='email' type='email' ref={inputEmail}/>
-          <input placeholder='Senha' name='password' type='password' ref={inputPassword}/>
+          <input placeholder='Senha' name='password' type={display ? "text" : "password"} ref={inputPassword}/>
+          <button className='icon-password' onClick={handleDisplay}>
+            { display ? <FaRegEyeSlash size={22} /> :
+            <FaRegEye size={20} /> }
+          </button>
           <button type='button' onClick={createUsers}>Cadastrar</button>
           </Form>
           <li>
