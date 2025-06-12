@@ -69,12 +69,37 @@ export const Form = styled.div`
     & input{
         border: 1px solid #6e6d7c;
         border-radius: 25px;
-        height: 35px;
+        height: 40px;
         background-color: ${({theme}) => theme.input};
         color: ${({theme}) => theme.text};
         font-size: 16px;
         padding-left: 10px;
         outline: none;
+        box-sizing: border-box;
+    }
+
+    .password-container{
+        position: relative;
+        width: 100%;
+
+        & input{
+            width: 100%;
+            padding-right: 35px;
+            box-sizing: border-box;
+        }
+    }
+
+    .icon-password{
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        border: none;
+        background: none;
+        cursor: pointer;
+        padding: 0;
+        display: flex;
+        align-items: center;
     }
 
     & button{
@@ -91,14 +116,6 @@ export const Form = styled.div`
         opacity: 0.8;
     }
 
-    .icon-password{
-        border: none;
-        background: none;
-        position: relative;
-        left: 16rem;
-        bottom: 4.2rem;
-        width: 10px;
-    }
 `
 
 //Users.jsx

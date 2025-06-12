@@ -91,11 +91,13 @@ const Home = ({themeToggler}) =>{
           <Form>
           <input placeholder='Nome' name='name' type='text' ref={inputName}/>
           <input placeholder='E-mail' name='email' type='email' ref={inputEmail}/>
+          <div className="password-container">
           <input placeholder='Senha' name='password' type={display ? "text" : "password"} ref={inputPassword}/>
           <button className='icon-password' onClick={handleDisplay}>
             { display ? <FaRegEyeSlash size={22} /> :
             <FaRegEye size={20} /> }
           </button>
+          </div>
           <button type='button' onClick={createUsers}>Cadastrar</button>
           </Form>
           <li>
